@@ -1,0 +1,46 @@
+{% extends 'homebase.html' %}
+
+{% block title %} {{ category_data.title }} - Product {% endblock %}
+{% block keywords %} {{ category_data.keywords }} {% endblock %}
+{% block description %}  {{ category_data.description }} {% endblock %}
+
+{% block head %} 
+    <link rel="shortcut icon" type="image/x-icon" href="{{setting.icon.url}}">
+{% endblock %}
+
+
+{% block content %}
+
+<section class="s-content s-content--top-padding s-content--narrow">
+    <article class="row entry format-standard">
+
+        <div class="entry__media col-full">
+            <div class="entry__post-thumb">
+                <img src="{{haber.image.url}}"  style="width: 1000px; height: 500px;"
+                alt="">
+            </div>
+        </div>
+
+        <div class="entry__header col-full">
+            <h1 class="entry__header-title display-1">
+                {{haber.title}}
+            </h1>
+            <ul class="entry__header-meta">
+                <li class="date">{{haber.create_at}}</li>
+                <li class="byline">
+                    <a href="#0">{{haber.author}}</a>
+                </li>
+            </ul>
+        </div>
+
+        <div class="col-full entry__main">
+            <p style="font-size: 23px;"><strong>{{haber.description}}</strong></p>
+            
+            {{haber.content|safe}}
+
+            
+        </div> <!-- s-entry__main -->
+    
+    </article> <!-- end entry/article -->
+</section> <!-- end s-content -->
+{% endblock %}

@@ -1,0 +1,41 @@
+{% load static %}
+    {% if page %}
+
+    {% else %}
+        <section class="s-featured">
+        <div class="row">
+            <div class="col-full">
+
+                <div class="featured-slider featured" data-aos="zoom-in">
+                    {% for rs in sliderdata %}
+                    <div class="featured__slide">
+                        <div class="entry">
+
+                            <div class="entry__background" style="background-image:url({{rs.image.url}});"></div>
+                            
+                            <div class="entry__content">
+                                <span class="entry__category"><a href="category/{{category.slug}}/{{category.id}}">{{rs.category}}</a></span>
+
+                                <h1><a href="haber/{{rs.slug}}/{{rs.id}}" title="">{{rs.title}}</a></h1>
+
+                                <div class="entry__info">
+                                    <a href="" class="entry__profile-pic">
+                                        <img class="avatar" src="{{rs.author_image.url}}" >
+                                    </a>
+                                    <ul class="entry__meta">
+                                        <li>{{rs.author}}</li>
+                                        <li>{{rs.create_at}}</li>
+                                    </ul>
+                                </div>
+                            </div> <!-- end entry__content -->
+                            
+                        </div> <!-- end entry -->
+                    </div> <!-- end featured__slide -->
+                    {% endfor %}
+                    
+                </div> <!-- end featured -->
+
+            </div> <!-- end col-full -->
+        </div>
+        </section> <!-- end s-featured -->
+    {% endif %}

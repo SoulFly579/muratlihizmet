@@ -1,0 +1,43 @@
+{% load static %}
+
+    <!-- header
+        ================================================== -->
+        <header class="s-header header">
+
+        <div class="header__logo">
+            <a class="logo" href="/">
+                <img src="{{setting.icon.url}}" >
+            </a>
+        </div> <!-- end header__logo -->
+
+        <a class="header__search-trigger" href="#0"></a>
+        <div class="header__search">
+
+
+        </div>  <!-- end header__search -->
+
+        <a class="header__toggle-menu" href="#0" title="Menu"><span>Menu</span></a>
+        <nav class="header__nav-wrap">
+
+            <h2 class="header__nav-heading h6">Navigate to</h2>
+
+            <ul class="header__nav">
+                <li class="current"><a href="/" >Anasayfa</a></li>
+                <li class="has-children">
+                    <a href="#0" title="">Kategoriler</a>
+                    <ul class="sub-menu">
+                        {% for rs in category %}
+                        <li><a href="/category/{{rs.slug}}/{{rs.id}}">{{rs.title}}</a></li>
+                        {% endfor %}
+                    </ul>
+                </li>
+                <li><a href="/iletisim/">İletişim</a></li>
+                <li><a href="/yazar/">Yazarlarımız</a></li>
+                <li><a href="/kunye/">Künye</a></li>
+            </ul> <!-- end header__nav -->
+
+            <a href="#0" title="Close Menu" class="header__overlay-close close-mobile-menu">Close</a>
+
+        </nav> <!-- end header__nav-wrap -->
+
+    </header> <!-- s-header -->

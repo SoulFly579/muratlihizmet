@@ -1,0 +1,56 @@
+<section class="s-content">
+        
+    <div class="row entries-wrap wide" style="margin-top: 50px;">
+        <div class="entries">
+        {% for rs in haber %}
+            <article class="col-block">
+                
+                <div class="item-entry" data-aos="zoom-in">
+                    <div class="item-entry__thumb">
+                        <a href="/haber/{{rs.slug}}/{{rs.id}}" class="item-entry__thumb-link">
+                            <img src="{{rs.image.url}}" style="width: 360px;height: 300px;" alt="">
+                        </a>
+                    </div>
+    
+                    <div class="item-entry__text">    
+                        <div class="item-entry__cat">
+                            <a href="/category/{{category.slug}}/{{category.id}}">{{rs.category}}</a> 
+                        </div>
+
+                        <h1 class="item-entry__title"><a href="/haber/{{rs.slug}}/{{rs.id}}">{{rs.title}}</a></h1>
+                            
+                        <div class="item-entry__date">
+                            <a href="single-standard.html">{{rs.create_at}}</a>
+                        </div>
+                    </div>
+                </div> <!-- item-entry -->
+
+            </article> <!-- end article -->
+
+        {% endfor %}
+        </div> <!-- end entries -->
+    </div> <!-- end entries-wrap -->
+
+    <div class="row pagination-wrap">
+        <div class="col-full">
+            <nav class="pgn" data-aos="fade-up">
+                <ul>
+                    {% if haber.has_previous %}
+                        <li><a class="pgn__prev" href="?page={{haber.previous_page_number}}">Prev</a></li>
+                    {% endif %}
+                    {% for num in haber.paginator.page_range %}
+                        {% if haber.number == num %}
+                            <li><span class="pgn__num current">{{num}}</span></li>
+                        {% elif num > haber.number|add:'-1' and num < haber.number|add:'1' %}
+                            <li><a class="pgn__num" href="?page={{haber.previous_page_number}}">{{num}}</a></li>
+                        {% endif %}
+                    {% endfor %}
+                    {% if haber.has_next %}
+                        <li><a class="pgn__next" href="?page={{haber.next_page_number}}">Next</a></li>
+                    {% endif %}
+                </ul>
+            </nav>
+        </div>
+    </div>
+
+</section> <!-- end s-content -->
